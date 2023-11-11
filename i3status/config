@@ -1,0 +1,60 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {
+        interval = 5
+}
+
+
+order += "battery all"
+order += "cpu_temperature T"
+order += "tztime local"
+order += "volume master"
+order += "wireless _first_"
+wireless _first_ {
+        format_up = "Connected  "
+        format_down = "Disconnected  "
+        align = "center"
+        color_good = "#37bd0f"
+        color_degraded = "#bdae0f"
+        color_bad = "#bd0f21"
+}
+cpu_temperature T{
+        format = "Temperature: %degrees °C"
+}
+battery all {
+        format = "Battery Remaining: %percentage %remaining"
+}
+
+disk "/" {
+        format = "%avail"
+}
+
+load {
+        format = "%1min"
+}
+
+memory {
+        format = "%used | %available"
+        threshold_degraded = "1G"
+        format_degraded = "MEMORY < %available"
+}
+
+tztime local {
+        format = "%H:%M:%S %d/%m/%Y"
+        align = "left"
+        min_width = 1
+}
+
+volume master {
+        format = "♪: %volume"
+        format_muted = "♪: muted (%volume)"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
